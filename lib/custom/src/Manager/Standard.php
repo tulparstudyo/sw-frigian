@@ -154,12 +154,12 @@ class Standard
 			//echo "$key=>$value<br>";
 			
 			\DB::table('sw_options')->where([
-                    ['option_group', 'frigian'],
+                    ['option_group', 'theme'],
                     ['option_key', $key],
                 ])->delete();
 			\DB::table('sw_options')->insertOrIgnore([
 				[
-					'option_group' => 'frigian', 
+					'option_group' => 'theme', 
 					'option_key' => $key, 
 					'value' => $value,  
 					'is_json' => $is_array,  
@@ -183,9 +183,10 @@ class Standard
 	{
 		$map = [];
 		$rows = \DB::table('sw_options')
-                    ->where('option_group', 'frigian')
+                    ->where('option_group', 'theme')
                     ->get();
 		if($rows){
+            $items = [];
 			foreach($rows as $row){
 				if($row->is_json){
 					$items[$row->option_key] = json_decode($row->value, 1) ;
@@ -197,7 +198,7 @@ class Standard
 			$map[] = $items;
 		}
 		
-		return $this->buildItems( $map, $ref, 'frigian' );
+		return $this->buildItems( $map, $ref, 'theme' );
 	}
 
 

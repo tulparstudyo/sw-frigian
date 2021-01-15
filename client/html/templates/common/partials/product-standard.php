@@ -5,8 +5,14 @@ $position = $this->get( 'position' );
 $detailTarget = $this->config( 'client/html/catalog/detail/url/target' );
 $detailController = $this->config( 'client/html/catalog/detail/url/controller', 'catalog' );
 $detailAction = $this->config( 'client/html/catalog/detail/url/action', 'detail' );
-$detailConfig = $this->config( 'client/html/catalog/detail/url/config', [] );
+$detailConfig = $this->config( 'client/html/catalog/detail/url/config', [] ); 
 $detailFilter = array_flip( $this->config( 'client/html/catalog/detail/url/filter', ['d_prodid'] ) );
+
+$basketTarget = $this->config( 'client/html/basket/standard/url/target' );
+$basketController = $this->config( 'client/html/basket/standard/url/controller', 'basket' );
+$basketAction = $this->config( 'client/html/basket/standard/url/action', 'index' );
+$basketConfig = $this->config( 'client/html/basket/standard/url/config', [] );
+$basketSite = $this->config( 'client/html/basket/standard/url/site' );
 
 $watchTarget = $this->config( 'client/html/account/watch/url/target' );
 $watchController = $this->config( 'client/html/account/watch/url/controller', 'account' );
@@ -50,6 +56,73 @@ if($productItem ){
 ?>
     <ul class="product__action--link pos-absolute">
     <li><a href="compare.html"><i class="icon-sliders"></i></a></li>
+
+
+   <?php /* <form method="POST" action="<?= $enc->attr( $this->url( $basketTarget, $basketController, $basketAction, ( $basketSite ? ['site' => $basketSite] : [] ), [], $basketConfig ) ); ?>">
+						        <!-- catalog.detail.csrf -->
+						        <?= $this->csrf()->formfield(); ?>
+						        <!-- catalog.detail.csrf -->
+
+						        <?php if( $basketSite ) : ?>
+							    <input type="hidden" name="<?= $this->formparam( 'site' ) ?>" value="<?= $enc->attr( $basketSite ) ?>" />
+                                <?php endif ?>
+                               
+
+                                <div class="stock-list">
+							        <div class="articleitem stock-actual"
+								        data-prodid="<?= $enc->attr( $productItem->getId() ); ?>"
+								        data-prodcode="<?= $enc->attr( $productItem->getCode() ); ?>">
+						    	    </div>
+
+							        <?php foreach( $productItem->getRefItems( 'product', null, 'default' ) as $articleId => $articleItem ) : ?>
+
+								    <div class="articleitem"
+									    data-prodid="<?= $enc->attr( $articleId ); ?>"
+									    data-prodcode="<?= $enc->attr( $articleItem->getCode() ); ?>">
+								    </div>
+
+							        <?php endforeach; ?>
+
+                                </div>
+                                <?php if( !$productItem->getRefItems( 'price', 'default', 'default' )->empty() ) : ?>
+                                    <div class="product-quantity product-var__item d-flex align-items-center">
+                                        <span class="product-var__text"></span>
+                                        <input type="hidden" value="add" name="<?= $enc->attr( $this->formparam( 'b_action' ) ); ?>" />
+								    	<input type="hidden"
+								    		name="<?= $enc->attr( $this->formparam( ['b_prod', 0, 'prodid'] ) ); ?>"
+								    		value="<?= $enc->attr( $productItem->getId() ); ?>"
+								    	/>   
+
+                     
+                                        <div class="quantity-scale ">
+                                            
+                                            <input type="hidden" id="number" <?= !$productItem->isAvailable() ? 'disabled' : '' ?>
+                                            name="<?= $enc->attr( $this->formparam( ['b_prod', 0, 'quantity'] ) ); ?>"
+								    		min="<?= $productItem->getScale() ?>" max="2147483647"
+								    		step="<?= $productItem->getScale() ?>" maxlength="10"
+								    		value="1" required="required" />
+                                      
+
+                                        </div>
+
+                                    </div>
+                                    <div class="product-var__item button">
+                                                <button type="submit" class=""
+                                                 <?= !$productItem->isAvailable() ? 'disabled' : '' ?>>
+                                                 <?= $enc->html( $this->translate( 'client', 'Add to basket' ), $enc::TRUST ); ?>
+                                                </button>
+                                              
+                                    </div>
+
+                               
+                                     
+                                <?php endif; ?>
+						
+
+                                </form> */?>
+
+
+
     <?php 
 
 

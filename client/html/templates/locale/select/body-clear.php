@@ -150,6 +150,6 @@ $nav = $this->get('nav', []);
 <!--  Start Mobile Header Section   -->
 <?=$this->partial( $this->config( 'client/html/common/partials/desktop_nav', 'common/partials/desktop_nav-standard' ),
 			array(
-				'nav' => $nav,
+				'nav' => $nav,
 			)
 		);?>

@@ -254,9 +254,9 @@ $reqstock = (int) $this->config( 'client/html/basket/require-stock', true );
                                
 
 
-                                <div class="product-var__item">
+                                <div class="frigian__item">
                                     <span class="calories-title">Guaranteed safe checkout </span>
-                                    <ul class="payment-icon m-t-5">
+                                    <ul class="payment-icon">
                                         <li><img src="<?=frigian_url('assets/img/icon/payment/paypal.svg') ?>" alt=""></li>
                                         <li><img src="<?=frigian_url('assets/img/icon/payment/amex.svg') ?> " alt=""></li>
                                         <li><img src="<?=frigian_url('assets/img/icon/payment/ipay.svg') ?>" alt=""></li>
@@ -267,7 +267,7 @@ $reqstock = (int) $this->config( 'client/html/basket/require-stock', true );
                                     </ul>
                                 </div>
 
-                                    <div class="product-var__item">
+                                    <div class="frigian-product-modal-group">
                                     <ul class="product-modal-group">
                                         <li><a href="#modalShippinginfo" data-toggle="modal"  class="link--gray link--icon-left"><i class="fal fa-truck-container"></i>Shipping</a></li>
                                         <li><a href="#modalProductAsk" data-toggle="modal"  class="link--gray link--icon-left"><i class="fal fa-envelope"></i>Ask About This product</a></li>
@@ -340,7 +340,7 @@ $reqstock = (int) $this->config( 'client/html/basket/require-stock', true );
                                     <!-- Start Tab - Product Details -->
                                     <div class="tab-pane" id="product-dis">
                                         <div class="product-dis__content">
-                                            <a href="#" class="product-dis__img m-b-30"><img src="<?=frigian_url('assets/img/logo/another-logo.jpg') ?>" alt=""></a>
+          
                                             <div class="table-responsive-md">
                                             <?php if( !$this->get( 'detailAttributeMap', map() )->isEmpty() || !$this->get( 'detailPropertyMap', map() )->isEmpty() ) : ?>
                                                 <table class="product-dis__list table table-bordered">
