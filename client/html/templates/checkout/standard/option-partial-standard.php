@@ -255,13 +255,7 @@ $cancelConfig = $this->config( 'client/html/checkout/standard/summary/option/ter
 		/>
 
 		<p>
-			<label for="option-terms-accept">
-				<?= $enc->html( sprintf( $this->translate( 'client',
-					'I accept the <a href="%1$s" target="_blank" title="terms and conditions" alt="terms and conditions">terms and conditions</a>, <a href="%2$s" target="_blank" title="privacy policy" alt="privacy policy">privacy policy</a> and <a href="%3$s" target="_blank" title="cancellation policy" alt="cancellation policy">cancellation policy</a>' ),
-					$enc->attr( $this->url( $termsTarget, $termsController, $termsAction, [], [], $termsConfig ) ),
-					$enc->attr( $this->url( $privacyTarget, $privacyController, $privacyAction, [], [], $privacyConfig ) ),
-					$enc->attr( $this->url( $cancelTarget, $cancelController, $cancelAction, [], [], $cancelConfig ) )
-				), $enc::TRUST ); ?>
+			<label for="option-terms-accept"> I accept the <a href="/jsonapi/frigian?legal=terms_conditions" target="_blank" title="terms and conditions" alt="terms and conditions" class="sw_popup"><?= $enc->html( $this->translate( 'client', 'Terms and Conditions'), $enc::TRUST ); ?></a>, <a href="/jsonapi/frigian?legal=privacy_policy" target="_blank" title="privacy policy" alt="privacy policy" class="sw_popup"><?= $enc->html( $this->translate( 'client', 'Privacy Policy'), $enc::TRUST ); ?></a> and <a href="/jsonapi/frigian?legal=cancellation_policy" target="_blank" title="cancellation policy" alt="cancellation policy" class="sw_popup"><?= $enc->html( $this->translate( 'client', 'Cancellation Policy'), $enc::TRUST ); ?></a>
 			</label>
 		</p>
 

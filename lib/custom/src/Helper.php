@@ -1,7 +1,7 @@
 <?php
 namespace Swordbros;
 class Frigian {
-    private $name='frigian';
+    const  name = 'frigian';
     public static function composerUpdate() {
 
 // rotes files
@@ -30,6 +30,19 @@ class Frigian {
         } else{
             echo " ! $src not found \r\n";
         }   
+// ai-client-html files replace
+        echo "::: ai-client-html FILES REPLACE :::\r\n";
+        $dst = base_path() . '/ext';
+        if(!is_dir($dst)){
+            @mkdir($dst); 
+        }
+        $src = dirname( __FILE__ ) . '/../view/ext';
+        if(is_dir($src)){
+            self::recurse_copy($src, $dst);
+            echo " - Required files copied to $dst \r\n";
+        } else{
+            echo " ! $src not found \r\n";
+        }   
 // theme package files
         echo "::: PUBLIC FILES SETUP :::\r\n";
         $dst = public_path() . '/packages/swordbros';
@@ -37,7 +50,7 @@ class Frigian {
             @mkdir($dst); 
         }
         $src = dirname( __FILE__ ) . '/../view/swordbros';
-        if(is_dir($dst.'/shop/themes/'.$this->name)){
+        if(is_dir($dst.'/shop/themes/'.self::name)){
             echo "$dst allready exists \r\n";
         } else{
             if(is_dir($src)){
