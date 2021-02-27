@@ -102,7 +102,7 @@ class Standard
 			$view->widgetHeader = $html;
 			if($widget) $widget = rtrim(ltrim($widget, '/'), '/').'/';
 			
-			$tplconf = 'client/html/swordbros/frigian/widget/template-header';
+			$tplconf = 'client/html/swordbros/frigis/widget/template-header';
 			$default = 'widget/'.$widget.'header-standard';
 
 			return $view->render( $view->config( $tplconf, $default ) );
@@ -198,6 +198,15 @@ class Standard
 
 		$cntl = \Aimeos\Controller\Frontend::create( $context, 'widget' );
 		$view->widgetCustomerItem = $cntl->uses( $domains )->get();
+		if( in_array( 'navigator', $config->get( 'client/html/catalog/stage/standard/subparts', ['navigator'] ) ) )
+		{
+			$size = $config->get( 'client/html/catalog/lists/size', 48 );
+			$size = min( max( $view->param( 'l_size', $size ), 1 ), 100 );
+			$page = min( max( $view->param( 'l_page', 1 ), 1 ), 100 );
+
+			$view->itemPosition = ( $page - 1 ) * $size;
+		}
+
 
 		return parent::addData( $view, $tags, $expire );
 	}

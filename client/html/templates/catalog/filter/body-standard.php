@@ -37,11 +37,25 @@ $optConfig = $this->config( 'client/jsonapi/url/config', [] );
 
 	<nav>
 		<form class="row" method="GET" action="<?= $enc->attr( $this->url( $listTarget, $listController, $listAction, $this->get( 'filterParams', [] ), $listConfig ) ); ?>">
+	
 
 			<?= $this->block()->get( 'catalog/filter/tree' ); ?>
+
+			<?php if ($this->param('f_name')) : ?>
+				<input type="hidden" name="f_name" value="<?=$this->param('f_name')?>" >
+
+			<?php endif; ?>
+
+			<?php if ($this->param('f_catid')) : ?>
+	
+				<input type="hidden" name="f_catid" value="<?=$this->param('f_catid')?>" >
+			<?php endif; ?>
+         
 			<?= $this->block()->get( 'catalog/filter/price' ); ?>
+          
 			<?= $this->block()->get( 'catalog/filter/supplier' ); ?>
 			<?= $this->block()->get( 'catalog/filter/attribute' ); ?>
+		
 
 		</form>
 	</nav>

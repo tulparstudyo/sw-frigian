@@ -89,80 +89,40 @@ $attrformat = $this->translate( 'client', '%1$s at %2$s' );
 
 ?>
 <?php $this->block()->start( 'account/history/list' ); ?>
- <?php if( !$this->get( 'listsOrderItems', map() )->isEmpty() ) : ?>
+
 
 	
 	<div class="account-history-list myaccount-orders">
 
-<h4 class="header"><?= $enc->html( $this->translate( 'client', 'Order history' ), $enc::TRUST ); ?></h4>
+		<h4 class="header"><?= $enc->html( $this->translate( 'client', 'Order history' ), $enc::TRUST ); ?></h4>
+		<?php if( !$this->get( 'listsOrderItems', map() )->isEmpty() ) : ?>
+			<div class="history-list">
 
-<div class="history-list">
+				<?php  echo \Aimeos\MShop\Swordbros\Orderhistory\Helper::get_order_table($this->get( 'listsOrderItems', [] ) , $this); ?>
 
-<?php  echo \Aimeos\MShop\Swordbros\Orderhistory\Helper::get_order_table($this->get( 'listsOrderItems', [] ) , $this); ?>
+			</div>
 
-</div>
+		<?php else: ?>
+			<div class="account-info">
+				<p>No previous order.</p>
+			</div>
+	
+       
+			<div class="cont-shop">
+				<a  class=" btn--box profile-button btn--radius btn--green btn--black-hover-green btn--uppercase font--semi-bold" href="/" >
+				<?php echo $enc->html( $this->translate( 'client', 'Continue Shopping' ), $enc::TRUST ); ?> 
 
-</div>
+				</a>      
+			</div>          
 
-
-
-
-	<?php /*<div class="account-history-list">
-		<div class="history-list">
-			<div class="my-account-order account-wrapper">
-			
-                <h4 class="account-title">Orders</h4>
-                <div class="account-table text-center m-t-30 table-responsive">
-                    <ul class="order-header ">
-                        
-                            <li class="no">No</li>
-                            <li class="name">Name</li>
-                            <li class="date">Date</li>
-                            <li class="status-header">Status</li>
-                           
-                            <li class="action">Action</li>
-                     
-	    			</ul>
-	    		
-	    			<?php $order_count=1;?>
-	    			<?php foreach( $this->get( 'listsOrderItems', [] ) as $id => $orderItem ) : ?>
-	    		
-                    <ul  class="history-item row ">
-					<li class="no"> <?= $order_count;?> 	</li>
-						<?php $order_count++;?> 
-		    			<li class="name">
-	    				<span class="name">
-	    					<?= $enc->html( $this->translate( 'client', 'Order ID' ), $enc::TRUST ) ?>
-	    				</span>
-	    				<span class="value">
-    							<?= $enc->html( $id ) ?>
-    						</span>
-    					</li>
-                        <li  class="date"><?= $enc->html( date_create( $orderItem->getTimeCreated() )->format( $dateformat ) ); ?></li>
-                        <li class="status-header"><?php if( ( $date = $orderItem->getDateDelivery() ) !== null ) : ?>
-											<?php $code = 'stat:' . $orderItem->getDeliveryStatus(); $status = $this->translate( 'mshop/code', $code ); ?>
-											<?= $enc->html( sprintf( $attrformat, $status, date_create( $date )->format( $dateformat ) ), $enc::TRUST ); ?>
-										<?php endif; ?></li>
-                       
-                        <li class="action">
-    						<div class="action col-md-2">
-    							<?php $params = ['his_action' => 'order', 'his_id' => $id] ?>
-    							<a  class="btn  btn-outline" href="<?= $enc->attr( $this->url( $accountTarget, $accountController, $accountAction, $params, [], $accountConfig ) ); ?>">
-    								<?= $enc->html( $this->translate( 'client', 'View' ) ) ?>
-    							</a>
-    						</div>
-    					</li>    
-                    </ul>
-    				
-    				<?php endforeach; ?>
-                                 
-                  
-            </div>
-		</div>*/?>
-										
+		<?php endif; ?> 
+	
+	</div>
 
 
-<?php endif; ?> 
+
+
+
 
 
 

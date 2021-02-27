@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @license LGPLv3, http://opensource.org/licenses/LGPL-3.0
+ * @license LGPLv3, http://opensource.org/licenses/LGPL-3.0 
  * @copyright Metaways Infosystems GmbH, 2014
  * @copyright Aimeos (aimeos.org), 2015-2020
  */
@@ -103,21 +103,18 @@ $optConfig = $this->config( 'client/jsonapi/url/config', [] );
 		</ul>
 	<?php endif; ?>
 
+	<h4 class="account-title"><?= $this->translate( 'client', 'Watch products' ); ?></h4>
 
 	<?php if( !$this->get( 'watchItems', map() )->isEmpty() ) : ?>
 
-		<h4 class="account-title"><?= $this->translate( 'client', 'Watched products' ); ?></h4>
-		
 
-		<ul class="watch-items m-t-30 ">
+		<ul class="watch-items ">
 			<?php foreach( $this->get( 'watchItems', map() )->reverse() as $listItem ) : ?>
 				<?php if( ( $productItem = $listItem->getRefItem() ) !== null ) :  ?>
 
-					<li class="watch-item product__box">
+					<li class="watch-item">
 						<?php $params = ['wat_action' => 'delete', 'wat_id' => $listItem->getRefId()] + $this->get( 'watchParams', [] ); ?>
-                        <a class="modify" href="<?= $this->url( $watchTarget, $watchController, $watchAction, $params, [], $watchConfig ); ?>">
-						<i class="fa fa-trash"></i>
-					</a>
+						<a class="modify" href="<?= $this->url( $watchTarget, $watchController, $watchAction, $params, [], $watchConfig ); ?>"><i class="fa fa-trash"></i></a>
 
 						<?php $params = array_diff_key( ['d_name' => $productItem->getName( 'url' ), 'd_prodid' => $productItem->getId(), 'd_pos' => ''], $detailFilter ); ?>
 						<a  href="<?= $enc->attr( $this->url( $detailTarget, $detailController, $detailAction, $params, [], $detailConfig ) ); ?>">
@@ -195,7 +192,7 @@ $optConfig = $this->config( 'client/jsonapi/url/config', [] );
 							</ul>
 
 							<div class="button-group">
-								<button class=" btn--box  btn--green btn--green-hover-black btn--uppercase font--semi-bold"><?= $enc->html( $this->translate( 'client', 'Watch' ), $enc::TRUST ); ?></button>
+								<button class="btn btn-primary btn-action"><?= $enc->html( $this->translate( 'client', 'Watch' ), $enc::TRUST ); ?></button>
 							</div>
 						</form>
 

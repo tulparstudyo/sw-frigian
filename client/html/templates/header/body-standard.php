@@ -10,7 +10,11 @@ $nav = $this->get('nav', []);
                         <div class="col-12">
                             <div class="header__top-content d-flex justify-content-between align-items-center">
                                 <div class="header__top-content--left">
-                                    <span><?= frigian_option('topbar_text'); ?></span>
+                                    <span><?=$this->partial( $this->config( 'client/html/common/partials/main_nav', 'common/partials/main_nav-standard' ),
+			array(
+				'nav' => $nav,
+			)
+		);?></span>
                                 </div>
 <?=$nav['locale']?>
                             </div>
@@ -31,11 +35,16 @@ $nav = $this->get('nav', []);
                                     <img class="header__logo-img img-fluid" src="<?=frigian_url('assets/img/logo/logo.png')?>" alt="">
                                 </a>
                             </div> <!-- End Logo -->
-<?=$this->partial( $this->config( 'client/html/common/partials/main_nav', 'common/partials/main_nav-standard' ),
+                        <div class="col-xl-7 col-lg-6">
+<?=$this->partial( $this->config( 'client/html/common/partials/search-mini', 'catalog/filter/search-body-mini' ),
 			array(
 				'nav' => $nav,
 			)
 		);?>
+
+
+
+                        </div>
 							<!-- Start Wishlist-AddCart -->
                             <ul class="header__user-action-icon">
 				<!-- Start Header Wishlist Box -->
@@ -72,31 +81,25 @@ $nav = $this->get('nav', []);
                 </div>
             </div> <!-- End Header Center area -->
              <!-- Start Header bottom area -->
-            <div class="header__bottom p-tb-20">
+            <div class="header__bottom ">
                 <div class="container">
                     <div class="row justify-content-between align-items-center">
-                        <div class="col-xl-3 col-lg-3">
+                        <div class="">
                             <div class="header-menu-vertical pos-relative">
-                                <h4 class="menu-title link--icon-left"><i class="far fa-align-left"></i><?=$this->translate('client', 'Categories')?></h4>
+                               
 <?=$this->partial( $this->config( 'client/html/common/partials/category_nav', 'common/partials/category_nav-standard' ),
 			array(
 				'nav' => $nav,
 			)
 		);?>
+
+
                             </div>
                         </div>
-                        <div class="col-xl-7 col-lg-6">
-<?=$this->partial( $this->config( 'client/html/common/partials/search-mini', 'catalog/filter/search-body-mini' ),
-			array(
-				'nav' => $nav,
-			)
-		);?>
-
-
-                        </div>
-                        <div class="col-xl-2 col-lg-3" style="padding-left: 0; padding-right: 0;">
+                       
+                        <?php /* <div class="col-xl-2 col-lg-3" style="padding-left: 0; padding-right: 0;">
                             <div class="header-phone text-right"><span><?= $this->translate( 'client', 'Call Us:' ); echo frigian_option('store_phone');?> </span></div>
-                        </div>
+                        </div> */ ?>
                     </div>
                 </div>
             </div> 
@@ -137,21 +140,22 @@ $nav = $this->get('nav', []);
                         </ul>   <!-- End User Action -->
                     </div>
                 </div>
-                <div class="row">
+                <?php /* <div class="row">
                     <div class="col-12">
                         <div class="header-menu-vertical pos-relative m-t-30">
-                            <h4 class="menu-title link--icon-left"><i class="far fa-align-left"></i><?=$this->translate('client', 'Categories')?></h4>						
-<?=$this->partial( $this->config( 'client/html/common/partials/category_nav', 'common/partials/category_nav-standard' ),
+                            
+<?php /*$this->partial( $this->config( 'client/html/common/partials/category_nav', 'common/partials/category_nav-standard' ),
 			array(
 				'nav' => $nav,
 			)
-		);?>
+		); 
                         </div>
-                    </div>
+                    </div> */?>
                 </div>
             </div>
         </div> 
 <!--  Start Mobile Header Section   -->
+
 <?=$this->partial( $this->config( 'client/html/common/partials/desktop_nav', 'common/partials/desktop_nav-standard' ),
 			array(
 				'nav' => $nav,

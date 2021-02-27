@@ -175,6 +175,10 @@ $productItems = $this->get( 'todoProductItems', map() );
 		<?= $this->get( 'todoBody' ); ?>
 
 	</div>
+	<?php else: ?>
+	<div class="account-info">
+	<p> You can comment on the products you have ordered.</p>
+	</div>
 
 <?php endif ?>
 <?php $this->block()->stop() ?>

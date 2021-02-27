@@ -324,6 +324,8 @@ class Standard
 
 		$cntl = \Aimeos\Controller\Frontend::create( $context, 'customer' );
 		$view->profileCustomerItem = $cntl->uses( $domains )->get();
+	
+
 
 		return parent::addData( $view, $tags, $expire );
 	}

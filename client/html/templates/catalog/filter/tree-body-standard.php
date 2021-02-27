@@ -52,7 +52,7 @@ $enforce = $this->config( 'client/html/catalog/filter/tree/force-search', false 
                         <!-- Start Single Sidebar Widget - Filter [Catagory] -->
                         <div class="sidebar__widget">
                             <div class="sidebar__box">
-                                <h5 class="sidebar__title">PRODUCT CATEGORIES</h5>
+                                <h5 class="sidebar__title">Product Categories</h5>
                             </div>
                             <ul class="sidebar__menu">
                                 <li>

@@ -41,7 +41,7 @@ $listConfig = $this->config( 'client/html/catalog/lists/url/config', [] );
  *
  * @param boolean True to use infinite scrolling, false to disable it
  * @since 2019.10
- * @category Developer
+ * @category Developer 
  */
 $infiniteScroll = $this->config( 'client/html/catalog/lists/infinite-scroll', false );
 $products = $this->get( 'listProductItems', map() );
@@ -49,31 +49,40 @@ $products = $this->get( 'listProductItems', map() );
 ?>
 <?php $this->block()->start( 'catalog/lists/items' ); ?>
 <div class="product-tab-area">
+
     <div class="tab-content tab-animate-zoom">
         <div class="tab-pane show active shop-grid" id="sort-grid">
             <div class="row">
-                <?php foreach($products as $product){ ?>
+
+                <?php foreach($products as $product){     ?>
+           <?php /*if($product->getProperties( 'package-protein' )) :
+            echo $product->getProperties( 'package-calorie' )->first(); */?>
                 <div class="col-md-4 col-12"> <?php echo $this->partial ( $this->config( 'client/html/common/partials/product', 'common/partials/product-standard' ),
                     array(
                         'require-stock' => ( bool )$this->config( 'client/html/basket/require-stock', true ),
                         'basket-add' => $this->config( 'client/html/catalog/product/basket-add', false ),
                         'product' => $product,
+                        'position' => $this->get( 'itemPosition' )
                     )
                 );
                 ?> </div>
+                 <?php/* endif; */?>
                 <?php } ?>
+
             </div>
         </div>
         <div class="tab-pane shop-list" id="sort-list">
             <div class="row"> 
                 <!-- Start Single List Product -->
                 <?php foreach($products as $product){ ?>
-                <div class="col-12"> 
+                   
+                <div class=" col-12"> 
                     <?php echo $this->partial ( $this->config( 'client/html/common/partials/product', 'common/partials/product-list-standard' ),
                     array(
                         'require-stock' => ( bool )$this->config( 'client/html/basket/require-stock', true ),
                         'basket-add' => $this->config( 'client/html/catalog/product/basket-add', false ),
                         'product' => $product,
+                        'position' => $this->get( 'itemPosition' )
                     )
                 );
                 ?> </div>

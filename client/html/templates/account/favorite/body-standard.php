@@ -102,11 +102,11 @@ $optConfig = $this->config( 'client/jsonapi/url/config', [] );
 		</ul>
 	<?php endif; ?>
 
-	
+	<h4 class="account-title"><?= $this->translate( 'client', 'Favorite products' ); ?></h4>
 
 
 	<?php if( !$this->get( 'favoriteItems', map() )->isEmpty() ) : ?>
-		<h4 class="account-title"><?= $this->translate( 'client', 'Favorite products' ); ?></h4>
+	
 		
 
 		<ul class="favorite-items m-t-30">
@@ -186,7 +186,25 @@ $optConfig = $this->config( 'client/jsonapi/url/config', [] );
 
 		<?php endif; ?>
 
-	<?php endif; ?>
+
+
+
+		<?php else: ?>
+			<div class="account-info">
+				<p> You have not added a favorite product to yet.</p>
+			</div>
+	
+       
+			<div class="cont-shop">
+				<a  class=" btn--box profile-button btn--radius btn--green btn--black-hover-green btn--uppercase font--semi-bold" href="/" >
+				<?php echo $enc->html( $this->translate( 'client', 'Continue Shopping' ), $enc::TRUST ); ?> 
+
+				</a>      
+			</div>          
+
+	<?php endif; ?> 
+
+
 
 
 	

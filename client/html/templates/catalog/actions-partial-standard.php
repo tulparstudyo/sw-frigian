@@ -59,7 +59,9 @@ $icons = array('pin'=>'fa-map-pin','watch'=>'fa-eye','favorite'=>'fa-heart');
 
 <div class="catalog-actions">
 	<?php foreach( $this->config( 'client/html/catalog/actions/list', ['pin', 'watch', 'favorite'] ) as $entry ) : ?>
+		<a class="action-name"><?= $enc->attr( $this->translate( 'client/code', $entry ) ); ?> :</a>
 		<?php if( isset( $urls[$entry] ) ) : ?>
+		
 			<a class="actions-button actions-button-<?= $enc->attr( $entry ); ?>" href="<?= $enc->attr( $urls[$entry] ); ?>" title="<?= $enc->attr( $this->translate( 'client/code', $entry ) ); ?>">
             <i class="fa <?= @$icons[$enc->attr( $entry )]; ?> "></i></a>
 		<?php endif; ?>

@@ -206,7 +206,7 @@ $priceFormat = $pricefmt !== 'price:default' ? $pricefmt : $this->translate( 'cl
                         </div>
                     </div>
                     <button class="offcanvas-add-cart__item-dismiss"><?php if( ( $product->getFlags() & \Aimeos\MShop\Order\Item\Base\Product\Base::FLAG_IMMUTABLE ) == 0 ) : ?>
-									<a class="delete" href="#"><i class="fal fa-times"></i></a>
+									<a class="delete" href="#"><i class="fa fa-trash" aria-hidden="true"></i></a>
 								<?php endif; ?></button>
                 </li> <!-- Start Single Add Cart Item-->
         

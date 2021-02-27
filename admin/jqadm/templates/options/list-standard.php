@@ -48,7 +48,7 @@ foreach ( $this->get( 'itemTypes', [] ) as $typeItem ) {
 ?>
 <?php $this->block()->start( 'jqadm_content' ); ?>
 <nav class="main-navbar"> <span class="navbar-brand">
-  <?= $enc->html( $this->translate( 'admin', 'Frigian Template Options' ) ); ?>
+  <?= $enc->html( $this->translate( 'admin', 'Swordbros Template Options' ) ); ?>
   <span class="navbar-secondary">(
   <?= $enc->html( $this->site()->label() ); ?>
   )</span> </span> </nav>

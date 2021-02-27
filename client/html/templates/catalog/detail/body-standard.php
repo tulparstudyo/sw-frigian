@@ -19,7 +19,7 @@ $optConfig = $this->config( 'client/jsonapi/url/config', [] );
 
 $basketTarget = $this->config( 'client/html/basket/standard/url/target' );
 $basketController = $this->config( 'client/html/basket/standard/url/controller', 'basket' );
-$basketAction = $this->config( 'client/html/basket/standard/url/action', 'index' );
+$basketAction = $this->config( 'client/html/basket/standard/url/action', 'index' ); 
 $basketConfig = $this->config( 'client/html/basket/standard/url/config', [] );
 $basketSite = $this->config( 'client/html/basket/standard/url/site' );
 
@@ -40,19 +40,7 @@ $reqstock = (int) $this->config( 'client/html/basket/require-stock', true );
 
 
 ?>
- <!-- ::::::  Start  Breadcrumb Section  ::::::  -->
- <div class="page-breadcrumb">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <ul class="page-breadcrumb__menu">
-                        <li class="page-breadcrumb__nav"><a href="#">Home</a></li>
-                        <li class="page-breadcrumb__nav active">Single Product - Default</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div> <!-- ::::::  End  Breadcrumb Section  ::::::  -->
+
     <!-- :::::: Start Main Container Wrapper :::::: -->
     <main id="main-container" class="main-container">
     <section class="aimeos catalog-detail" itemscope="" itemtype="http://schema.org/Product" data-jsonurl="<?= $enc->attr( $this->url( $optTarget, $optCntl, $optAction, [], [], $optConfig ) ); ?>">
@@ -92,9 +80,9 @@ $reqstock = (int) $this->config( 'client/html/basket/require-stock', true );
                             <h4 class="font--regular ">
                             <?= $enc->html( $this->detailProductItem->getName(), $enc::TRUST ); ?>
                             </h4>
-                            
+                         
                             <ul class="product__review">
-                                <?php if( $this->detailProductItem->getRating() > 0 ) : ?>
+                                <?php if( $this->detailProductItem->getRating() > 0 ) :    ?>
                                 <?= str_repeat( '<li class="product__review--fill"><i class="icon-star"></i></li>', (int) round( $this->detailProductItem->getRating() )) ?>
                                 <?php endif ?>
                                          
@@ -116,7 +104,7 @@ $reqstock = (int) $this->config( 'client/html/basket/require-stock', true );
                             </div>
 
                             <div class="product-var ">
-
+ 
                                
 
                                
@@ -181,33 +169,24 @@ $reqstock = (int) $this->config( 'client/html/basket/require-stock', true );
 						
 
                                 </form>
+
+                                <div class="frigian__item">
+                                    <span class="calories-title">Guaranteed safe checkout </span>
+                                    <ul class="payment-icon">
+                                      
+                                        <li><img src="<?=frigian_url('assets/img/icon/payment/visa.svg') ?>" alt=""></li>
+                                     
+                                        <li><img src="<?=frigian_url('assets/img/icon/payment/mastercard.svg') ?>" alt=""></li>
+                                    
+                                    </ul>
+                                </div>
                                
 
 
-                                <?= $this->partial(
-					            /** client/html/catalog/partials/actions
-					            * Relative path to the catalog actions partial template file
-					            *
-					            * Partials are templates which are reused in other templates and generate
-					            * reoccuring blocks filled with data from the assigned values. The actions
-					            * partial creates an HTML block for the product actions (pin, like and watch
-					            * products).
-					            *
-					            * @param string Relative path to the template file
-					            * @since 2017.04
-					            * @category Developer
-					            */
-					            $this->config( 'client/html/catalog/partials/actions', 'catalog/actions-partial-standard' ),
-					            ['productItem' => $this->detailProductItem]
-                                ); ?>
-                                
-
-                                
                                 <?php if( !$this->get( 'detailAttributeMap', map() )->isEmpty() || !$this->get( 'detailPropertyMap', map() )->isEmpty() ) : ?>
                                     <div class="calories-title">
-                                    <?= $enc->html( $this->translate( 'client', 'Nutritional value per 100 g:' ), $enc::TRUST ); ?>      </div>  
+                                    <?= $enc->html( $this->translate( 'client', 'Nutritional value per 100 g' ), $enc::TRUST ); ?>      </div>  
                                    
-
                                         <div class="calories">
        
                                             <div class="calories-values">
@@ -244,28 +223,27 @@ $reqstock = (int) $this->config( 'client/html/basket/require-stock', true );
                                     </div>
                                 <?php endif; ?>
                             
+
+
+
+
+                                <?= $this->partial(
+					            /** client/html/catalog/partials/actions
+					            * Relative path to the catalog actions partial template file
+					            *
+					            * Partials are templates which are reused in other templates and generate
+					            * reoccuring blocks filled with data from the assigned values. The actions
+					            * partial creates an HTML block for the product actions (pin, like and watch
+					            * products).
+					            *
+					            * @param string Relative path to the template file
+					            * @since 2017.04
+					            * @category Developer
+					            */
+					            $this->config( 'client/html/catalog/partials/actions', 'catalog/actions-partial-standard' ),
+					            ['productItem' => $this->detailProductItem]
+                                ); ?>
                             
-
-                                
-              
-
-                                                               
-                              
-                               
-
-
-                                <div class="frigian__item">
-                                    <span class="calories-title">Guaranteed safe checkout </span>
-                                    <ul class="payment-icon">
-                                        <li><img src="<?=frigian_url('assets/img/icon/payment/paypal.svg') ?>" alt=""></li>
-                                        <li><img src="<?=frigian_url('assets/img/icon/payment/amex.svg') ?> " alt=""></li>
-                                        <li><img src="<?=frigian_url('assets/img/icon/payment/ipay.svg') ?>" alt=""></li>
-                                        <li><img src="<?=frigian_url('assets/img/icon/payment/visa.svg') ?>" alt=""></li>
-                                        <li><img src="<?=frigian_url('assets/img/icon/payment/shoify.svg') ?>" alt=""></li>
-                                        <li><img src="<?=frigian_url('assets/img/icon/payment/mastercard.svg') ?>" alt=""></li>
-                                        <li><img src="<?=frigian_url('assets/img/icon/payment/gpay.svg') ?>" alt=""></li>
-                                    </ul>
-                                </div>
 
                                     <div class="frigian-product-modal-group">
                                     <ul class="product-modal-group">
@@ -435,7 +413,29 @@ $reqstock = (int) $this->config( 'client/html/basket/require-stock', true );
 										</li>
 									</ul>
 								</div>*/?>
-								<div class="review-items ">
+
+
+                                <div class="review-items">
+									<div class="review-item prototype">
+									<label class="review-head">
+									<i class="fa fa-user" aria-hidden="true"></i>
+										<div class="review-name"></div>
+										<div class="review-ctime"></div>
+									</label>
+									<label class="review-body">
+										
+										<div class="review-comment"></div>
+										<div class="review-rating product__review--fill">★</div>
+										<div class="review-response">
+										<i class="fa fa-reply" aria-hidden="true"></i>
+											<div class="review-vendor"><?= $enc->html( $this->translate( 'client', 'Vendor response' ) ) ?></div>
+										</div>
+									</label>
+										<div class="review-show"><a href="#"><?= $enc->html( $this->translate( 'client', 'Show' ) ) ?></a></div><!--
+									--></div>
+								</div>
+                                
+								<?php /*<div class="review-items ">
 									<div class="review-item prototype comment__list">
 										<div class="review-name comment__name"></div>
 										<!--<div class="review-ctime"></div>-->
@@ -446,7 +446,7 @@ $reqstock = (int) $this->config( 'client/html/basket/require-stock', true );
 										</div>
 										<div class="review-show"><a href="#"><?= $enc->html( $this->translate( 'client', 'Show' ) ) ?></a></div><!--
 									--></div>
-								</div>
+								</div>*/?>
 								<a class=" btn-primary more" href="#"><?= $enc->html( $this->translate( 'client', 'More reviews' ), $enc::TRUST ) ?></a>
 							</div>
 						</div>
@@ -515,10 +515,13 @@ $reqstock = (int) $this->config( 'client/html/basket/require-stock', true );
 			                          array(
 			        	              'require-stock' => (bool) $this->config( 'client/html/basket/require-stock', true ),
 			        	              'basket-add' => $this->config( 'client/html/catalog/product/basket-add', false ),
-				                      'product' => $product,)
+				                      'product' => $product,
+                                      'position' => $this->get( 'itemPosition' )
+                                      )
                                     );
+                                 
                                 }?> 
-
+                        
 
                                
                             </div>
@@ -551,7 +554,8 @@ $reqstock = (int) $this->config( 'client/html/basket/require-stock', true );
 			                          array(
 			        	              'require-stock' => (bool) $this->config( 'client/html/basket/require-stock', true ),
 			        	              'basket-add' => $this->config( 'client/html/catalog/product/basket-add', false ),
-				                      'product' => $product,)
+				                      'product' => $product,
+                                      'position' => $this->get( 'itemPosition' ))
                                     );
                                 }?> 
 
@@ -585,6 +589,7 @@ $reqstock = (int) $this->config( 'client/html/basket/require-stock', true );
                                 'require-stock' => (bool) $this->config( 'client/html/basket/require-stock', true ),
                                 'basket-add' => $this->config( 'client/html/catalog/product/basket-add', false ),
                                 'product' => $product,
+                                'position' => $this->get( 'itemPosition' )
                                 )
                                 );			  
                                 }?>  

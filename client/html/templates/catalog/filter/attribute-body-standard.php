@@ -1,15 +1,10 @@
 <?php
-
 /**
  * @license LGPLv3, http://opensource.org/licenses/LGPL-3.0
  * @copyright Metaways Infosystems GmbH, 2013
  * @copyright Aimeos (aimeos.org), 2015-2020
  */
-
 $enc = $this->encoder();
-
-
-
 /** client/html/catalog/filter/standard/button
  * Displays the "Search" button in the catalog filter if Javascript is disabled
  *
@@ -24,91 +19,65 @@ $enc = $this->encoder();
  * @category User
  * @category Developer
  */
-
 $listTarget = $this->config( 'client/html/catalog/lists/url/target' );
 $listController = $this->config( 'client/html/catalog/lists/url/controller', 'catalog' );
 $listAction = $this->config( 'client/html/catalog/lists/url/action', 'list' );
 $listConfig = $this->config( 'client/html/catalog/lists/url/config', [] );
-
 $attrIds = array_filter( $this->param( 'f_attrid', [] ) );
 $optIds = array_filter( $this->param( 'f_optid', [] ) );
 $oneIds = array_filter( $this->param( 'f_oneid', [] ) );
-
-
 ?>
 <?php $this->block()->start( 'catalog/filter/attribute' ); ?>
 <?php if( !empty( $this->get( 'attributeMap', [] ) ) ) : ?>
 	<section class="catalog-filter-attribute m-t-40">
-
 	 
     <div class="sidebar__box">
-                                <h5 class="sidebar__title">
+    	<h5 class="sidebar__title">
                                 
-								<?= $enc->html( $this->translate( 'client', 'Attributes' ), $enc::TRUST ); ?>
-                              </h5>
-                            </div>
-
-
+		<?= $enc->html( $this->translate( 'client', 'Attributes' ), $enc::TRUST ); ?>
+    	</h5>
+    </div>
 		<div class="attribute-lists">
-
 			<?php if( array_merge( $attrIds, $optIds, $oneIds ) !== [] ) : ?>
-				<a style="padding:5px; color:white;" class="btn  btn--black font--semi-bold" href="<?= $enc->attr( $this->url( $listTarget, $listController, $listAction, $this->get( 'attributeResetParams', [] ), [], $listConfig ) ); ?>">
+				<?php /*<a style="padding:5px; color:white;" class="btn  btn--black font--semi-bold" href="<?= $enc->attr( $this->url( $listTarget, $listController, $listAction, $this->get( 'attributeResetParams', [] ), [], $listConfig ) ); ?>">
 					<?= $enc->html( $this->translate( 'client', 'Reset' ), $enc::TRUST ); ?>
-				</a>
+				</a> */?>
 			<?php endif; ?>
-
 			<div class="fieldsets">
-
 				<?php foreach( $this->get( 'attributeMap', [] ) as $attrType => $attributes ) : ?>
 					<?php if( !empty( $attributes ) ) : ?>
-
 						<fieldset class="attr-<?= $enc->attr( $attrType, $enc::TAINT, '-' ); ?>">
 							<legend><?= $enc->html( $this->translate( 'client/code', $attrType ), $enc::TRUST ); ?></legend>
 							<ul class="attr-list"><!--
-
 								<?php foreach( $attributes as $id => $attribute ) : ?>
 									--><li class="attr-item" data-id="<?= $enc->attr( $id ); ?>">
-
 										
 									<input class="attr-item" type="checkbox"
-
-id="attr-<?= $enc->attr( $id ); ?>"
-
-value="<?= $enc->attr( $id ); ?>"
-
-name="<?= $enc->attr( $this->formparam( $attribute->get( 'formparam', [] ) ) ); ?>"
-
-<?= $attribute->get( 'checked', false ) ? 'checked="checked"' : '' ?>
-
-/>
-
+										id="attr-<?= $enc->attr( $id ); ?>"
+										value="<?= $enc->attr( $id ); ?>"
+										name="<?= $enc->attr( $this->formparam( $attribute->get( 'formparam', [] ) ) ); ?>"
+										<?= $attribute->get( 'checked', false ) ? 'checked="checked"' : '' ?>
+									/>
 										
-
 										<label class="attr-name" for="attr-<?= $enc->attr( $id ); ?>"><!--
 											--><div class="media-list"><!--
-
 												<?php foreach( $attribute->getRefItems( 'media', 'icon', 'default' ) as $mediaItem ) : ?>
 													<?= '-->' . $this->partial(
 														$this->config( 'client/html/common/partials/media', 'common/partials/media-standard' ),
 														array( 'item' => $mediaItem, 'boxAttributes' => array( 'class' => 'media-item' ) )
 													) . '<!--'; ?>
 												<?php endforeach; ?>
-
 											--></div>
 											<span><?= $enc->html( $attribute->getName(), $enc::TRUST ); ?></span><!--
 										--></label>
 									</li><!--
-
 								<?php endforeach; ?>
 							--></ul>
 						</fieldset>
-
 					<?php endif; ?>
 				<?php endforeach; ?>
-
 			</div>
 		</div>
-
 		<?php if( $this->config( 'client/html/catalog/filter/standard/button', true ) ) : ?>
 			<noscript>
 				<button class="filter btn btn-primary" type="submit">
@@ -116,7 +85,6 @@ name="<?= $enc->attr( $this->formparam( $attribute->get( 'formparam', [] ) ) ); 
 				</button>
 			</noscript>
 		<?php endif; ?>
-
 	</section>
 <?php endif; ?>
 <?php $this->block()->stop(); ?>

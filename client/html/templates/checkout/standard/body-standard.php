@@ -89,7 +89,20 @@ $optConfig = $this->config( 'client/jsonapi/url/config', [] );
                    $('.detail-checkout').html(basket); 
                 } else {
                     var error = $(".error-list", doc).text();
-                    alert(error);
+                    if(error){
+                        alert(error);
+                    } else{
+                        $.get( '/shop/checkout', function( response ) {
+                            var doc = document.createElement("html");
+                            doc.innerHTML = response;
+                            var basket = $(".detail-checkout", doc);
+                            if(basket.length){
+                                $('.detail-checkout').html(basket); 
+                            } else {
+                                alert("unknown error, please try again later");
+                            }
+                        });
+                    }
                 }
             }
         });

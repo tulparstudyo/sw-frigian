@@ -26,7 +26,8 @@ $nav['locale'] = $this->partial( $this->config( 'client/html/common/partials/loc
 			)
 		);		
 $nav['items'] = [];
-$nav['categories'] = $view->treeCatalogTree->getChildren();
+$nav['categories'] = \Aimeos\Shop\Facades\Catalog::uses(['text', 'media'])->getTree();
+
 $header_type = frigian_option('header_type');
 if(empty($header_type)) $header_type = 'standard';
 $this->block()->start( 'locale/select' ); 

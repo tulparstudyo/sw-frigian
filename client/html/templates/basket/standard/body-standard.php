@@ -3,7 +3,7 @@
 /**
  * @license LGPLv3, http://opensource.org/licenses/LGPL-3.0
  * @copyright Metaways Infosystems GmbH, 2012
- * @copyright Aimeos (aimeos.org), 2015-2020
+ * @copyright Aimeos (aimeos.org), 2015-2020 
  */
 
 $enc = $this->encoder();
@@ -42,17 +42,17 @@ $optConfig = $this->config( 'client/jsonapi/url/config', [] );
 						<?php foreach( (array) $this->standardErrorList as $errmsg ) : ?>
                         <h3 class="error-item title title--normal title--thin m-tb-30"><?= $enc->html( $errmsg ); ?></h3>
 						<?php endforeach; ?>
-                        <a href="<?= url('/')?>" class=" btn--box btn--large btn--radius btn--green btn--green-hover-black btn--uppercase font--semi-bold m-t-20">CONTINUE SHOPPING</a>
+                        <a href="<?= url('/')?>" class=" btn--box btn--small btn--radius btn--green btn--green-hover-black btn--uppercase font--semi-bold m-t-20">Continue Shopping</a>
                     </div>
                 </div>
             </div>
         </div>
     </main>
 
-		
+	<?php endif; ?>
 
 
-	<?php else :?>
+
 
 	<?php if( isset( $this->standardBasket ) ) : ?>
 		
@@ -157,6 +157,6 @@ $optConfig = $this->config( 'client/jsonapi/url/config', [] );
 		</form>
 
 	<?php endif; ?>
-	<?php endif; ?>
+
 
 </section>

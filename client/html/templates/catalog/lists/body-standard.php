@@ -1,14 +1,10 @@
 <?php
-
 /**
  * @license LGPLv3, http://opensource.org/licenses/LGPL-3.0
  * @copyright Metaways Infosystems GmbH, 2012
  * @copyright Aimeos (aimeos.org), 2015-2020
  */
-
 $enc = $this->encoder();
-
-
 if( $this->param( 'f_catid' ) !== null )
 {
 	$target = $this->config( 'client/html/catalog/tree/url/target' );
@@ -23,13 +19,10 @@ else
 	$action = $this->config( 'client/html/catalog/lists/url/action', 'list' );
 	$config = $this->config( 'client/html/catalog/lists/url/config', [] );
 }
-
 $optTarget = $this->config( 'client/jsonapi/url/target' );
 $optCntl = $this->config( 'client/jsonapi/url/controller', 'jsonapi' );
 $optAction = $this->config( 'client/jsonapi/url/action', 'options' );
 $optConfig = $this->config( 'client/jsonapi/url/config', [] );
-
-
 /** client/html/catalog/lists/head/text-types
  * The list of text types that should be rendered in the catalog list head section
  *
@@ -47,8 +40,6 @@ $optConfig = $this->config( 'client/jsonapi/url/config', [] );
  * @category Developer
  */
 $textTypes = $this->config( 'client/html/catalog/lists/head/text-types', array( 'long' ) );
-
-
 /** client/html/catalog/lists/pagination/enable
  * Enables or disables pagination in list views
  *
@@ -62,7 +53,6 @@ $textTypes = $this->config( 'client/html/catalog/lists/head/text-types', array( 
  * @category User
  * @category Developer
  */
-
 /** client/html/catalog/lists/partials/pagination
  * Relative path to the pagination partial template file for catalog lists
  *
@@ -76,47 +66,27 @@ $textTypes = $this->config( 'client/html/catalog/lists/head/text-types', array( 
  * @category Developer
  */
 $products = $this->get( 'itemsProductItems', map() );
-
 ?>
-
         <div class="container">
             <div class="row flex-column-reverse flex-lg-row">
                 <!-- Start Leftside - Sidebar Widget -->
                 <div class="col-lg-3">
                     <div class="sidebar">
 <?=frigian_catalog_filter()?>
-
                     </div>
                 </div> <!-- End Left Sidebar Widget -->
-
                 <!-- Start Rightside - Product Type View -->
                 <div class="col-lg-9">
-
                 
                 <?php if( isset( $this->listErrorList ) ) : ?>
-
 <ul class="error-list">
-
     <?php foreach( (array) $this->listErrorList as $errmsg ) : ?>
-
         <li class="error-item"><?= $enc->html( $errmsg ); ?></li>
-
     <?php endforeach; ?>
-
 </ul>
-
 <?php endif; ?>
-
-
-
-
-
-
-
     
 <?= $this->block()->get( 'catalog/lists/promo' ); ?>
-
-
 <?php if( $this->get( 'listProductTotal', 0 ) > 0 ) : ?>
     <?php /*<div class="catalog-list-type">
 			<a class="type-item type-grid" title="<?= $enc->attr( $this->translate( 'client', 'Grid view' ) ) ?>"
@@ -124,9 +94,8 @@ $products = $this->get( 'itemsProductItems', map() );
 			<a class="type-item type-list" title="<?= $enc->attr( $this->translate( 'client', 'List view' ) ) ?>"
 				href="<?= $enc->attr( $this->url( $target, $cntl, $action, array( 'l_type' => 'list' ) + $this->get( 'listParams', [] ), [], $config ) ); ?>"></a>
 		</div>*/?>
-
                     <!-- ::::::  Start Sort Box Section  ::::::  -->
-                    <div class="sort-box m-tb-40">
+                    <div class="sort-box ">
                         <!-- Start Sort Left Side -->
                         <div class="sort-box-item">
                             <div class="sort-box__tab">
@@ -136,7 +105,6 @@ $products = $this->get( 'itemsProductItems', map() );
                                 </ul>
                             </div>
                         </div> <!-- Start Sort Left Side -->
-
                         <?php if( $this->get( 'listProductTotal', 0 ) > 0 && $this->config( 'client/html/catalog/lists/pagination/enable', true ) ) : ?>
 						<?= $this->partial(
 							$this->config( 'client/html/catalog/lists/partials/pagination', 'catalog/lists/pagination-standard' ),
@@ -152,19 +120,12 @@ $products = $this->get( 'itemsProductItems', map() );
 						);
 						?>
 						<?php endif ?>
-
     <div class="product-page_count">
-
 <span><?=$this->translate( 'client', 'Found' )?> <?=$this->get( 'listProductTotal', 0 )?> <?=$this->translate( 'client', 'results' )?></span>
-
 </div>
-
 <?php endif; ?>
-
-
     <?php if( ( $searchText = $this->param( 'f_search', null ) ) != null ) : ?>
 		<div class="list-search">
-
 			<?php if( ( $total = $this->get( 'listProductTotal', 0 ) ) > 0 ) : ?>
 				<?= $enc->html( sprintf(
 					$this->translate(
@@ -185,17 +146,12 @@ $products = $this->get( 'itemsProductItems', map() );
 					$searchText
 				), $enc::TRUST ); ?>
 			<?php endif; ?>
-
 		</div>
 	<?php endif; ?>
-
                        
                     </div> <!-- ::::::  Start Sort Box Section  ::::::  -->
-
-
                     
 	<?= $this->block()->get( 'catalog/lists/items' ); ?>
-
                     <div class="page-pagination">
                         <ul class="page-pagination__list">
                             <li class="page-pagination__item"><a class="page-pagination__link"  href="#">Prev</a>
@@ -209,5 +165,3 @@ $products = $this->get( 'itemsProductItems', map() );
             </div>
         </div>
     </main>  <!-- :::::: End MainContainer Wrapper :::::: -->
-
-

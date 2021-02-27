@@ -30,9 +30,13 @@ $products = frigian_top_products();
 				'require-stock' => (bool) $this->config( 'client/html/basket/require-stock', true ),
 				'basket-add' => $this->config( 'client/html/catalog/product/basket-add', false ),
 				'product' => $product,
+        'position' => $this->get( 'itemPosition' )
 			)
 		);			  
 }?>  
+
+
+
               </div>
             </div>
           </div>

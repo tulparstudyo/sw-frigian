@@ -11,6 +11,7 @@ $nav = $this->get( 'nav', [] );
       <!-- End Single Nav link--> 
       
       <!--Start Single Nav link-->
+      <?php /* 
       <li class="header__nav-item pos-relative"> <a href="#" class="header__nav-link">
       <?= $this->translate( 'client', 'Custom Block' ); ?> <i class="fal fa-chevron-down"></i></a> 
         <!-- Megamenu Menu-->
@@ -57,10 +58,15 @@ $nav = $this->get( 'nav', [] );
         <!-- Megamenu Menu--> 
       </li>
       <!-- Start Single Nav link--> 
-      
+      */?>
       <!--Start Single Nav link-->
-      <li class="header__nav-item pos-relative"> <a href="#" class="header__nav-link"><?= $this->translate( 'client', 'Blog' ); ?> <i class="fal fa-chevron-down"></i></a> 
-        <!--Single Dropdown Menu-->
+      <li class="header__nav-item pos-relative"> <a href="#" class="header__nav-link">
+      <?= $this->translate( 'client', 'About Us' ); ?> </a> 
+        
+      </li>
+
+      <li class="header__nav-item pos-relative"> <a href="#" class="header__nav-link"><?= $this->translate( 'client', 'Blog' ); ?> </a> 
+        <!--Single Dropdown Menu
         <ul class="dropdown__menu pos-absolute">
           <li class="dropdown__list"> <a href="#" class="dropdown__link d-flex justify-content-between align-items-center"><?= $this->translate( 'client', 'Blog Grid' ); ?> <i class="far fa-chevron-right"></i></a>
             <ul class="dropdown__submenu pos-absolute">
@@ -81,13 +87,13 @@ $nav = $this->get( 'nav', [] );
             </ul>
           </li>
         </ul>
-        <!--Single Dropdown Menu--> 
+    Single Dropdown Menu--> 
       </li>
       <!-- End Single Nav link--> 
       
-      <!--Start Single Nav link-->
+      <!--Start Single Nav link
       <li class="header__nav-item pos-relative"> <a href="#" class="header__nav-link"><?= $this->translate( 'client', 'Pages' ); ?>  <i class="fal fa-chevron-down"></i></a> <span class="menu-label menu-label--blue"><?= $this->translate( 'client', 'New' ); ?></span> 
-        <!--Single Dropdown Menu-->
+      Single Dropdown Menu-->
         <ul class="dropdown__menu pos-absolute">
           <li class="dropdown__list"><a href="about.html" class="dropdown__link"><?= $this->translate( 'client', 'About Us' ); ?></a></li>
           <li class="dropdown__list pos-relative"> <a href="frequently-questions.html" class="dropdown__link"><?= $this->translate( 'client', 'Frequently Questions' ); ?></a> <span class="menu-label menu-label--blue"><?= $this->translate( 'client', 'New' ); ?></span> </li>
