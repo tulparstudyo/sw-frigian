@@ -24,7 +24,7 @@ class FixOptionsTable extends Migration
      */
     public function down()
     {   
-        echo " Swordbros options table is existing. \r\n";
+        echo " Swordbros options table is exist. \r\n";
     }
     
     private static function fix_options_tables(){
