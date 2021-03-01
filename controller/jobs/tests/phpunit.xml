@@ -7,6 +7,6 @@
 		</testsuite>
 	</testsuites>
 	<logging>
-		<log type="junit" target="sw-frigian_controller-jobs_test.junit.xml" />
+		<log type="junit" target="sw-sardes_controller-jobs_test.junit.xml" />
 	</logging>
 </phpunit>

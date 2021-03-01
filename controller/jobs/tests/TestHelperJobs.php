@@ -96,7 +96,7 @@ class TestHelperJobs
 		$ctx->setView( $view );
 
 
-		$ctx->setEditor( 'sw-frigian:cntl/jobs' );
+		$ctx->setEditor( 'sw-sardes:cntl/jobs' );
 
 		return $ctx;
 	}
