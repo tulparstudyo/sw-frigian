@@ -69,8 +69,7 @@ foreach ( $this->get( 'itemTypes', [] ) as $typeItem ) {
           <li class="nav-item home-page"> <a class="nav-link" href="#footer" data-toggle="tab" role="tab"> Footer</a> </li>
           <li class="nav-item home-page"> <a class="nav-link" href="#home-page" data-toggle="tab" role="tab"> Home Page</a> </li>
           <li class="nav-item legals"> <a class="nav-link" href="#legals" data-toggle="tab" role="tab"> Legals</a> </li>
-          <!--<li class="nav-item custom"> <a class="nav-link" href="#custom" data-toggle="tab" role="tab"> Custom Css/Js</a> </li>
-          <li class="nav-item socials"> <a class="nav-link" href="#socials" data-toggle="tab" role="tab"> Socials</a> </li>-->
+          <li class="nav-item pages"> <a class="nav-link" href="#pages" data-toggle="tab" role="tab"><?= $enc->html( $this->translate( 'admin', 'Pages' ) ); ?> </a> </li>
           <li class="nav-item help"> <a class="nav-link" href="#help" data-toggle="tab" role="tab"> Support</a> </li>
         </ul>
         <br>
@@ -164,6 +163,23 @@ foreach ( $this->get( 'itemTypes', [] ) as $typeItem ) {
             <label class="col-sm-4 form-control-label help" >Instagram</label>
             <div class="col-sm-8">
               <input type="text" name="option[instagram_url]"  value="<?=get_option_value($this->items, 'instagram_url')?>" class="form-control item-label">
+            </div>
+          </div>
+          <h4><?= $enc->html( $this->translate( 'admin', 'Customize' ) ); ?></h4>
+          <div class="form-group row ">
+            <label class="col-sm-4 form-control-label help" >Javascript</label>
+            <div class="col-sm-8">
+                <strong>&lt;javascript&gt;</strong>
+              <textarea  name="option[js_code]"  class="form-control item-label"><?=get_option_value($this->items, 'js_code')?></textarea>
+                <strong>&lt;/javascript&gt;</strong>
+            </div>
+          </div>
+          <div class="form-group row ">
+            <label class="col-sm-4 form-control-label help" >Css</label>
+            <div class="col-sm-8">
+                <strong>&lt;style&gt;</strong>
+              <textarea name="option[css_code]" class="form-control item-label"><?=get_option_value($this->items, 'css_code')?></textarea>
+                <strong>&lt;/style&gt;</strong>
             </div>
           </div>
         </div>
@@ -390,11 +406,54 @@ foreach ( $this->get( 'itemTypes', [] ) as $typeItem ) {
           </div>
         </div>
       </div>
-      <div id="custom" class="row item-custom tab-pane col-md-12" role="tabpanel" aria-labelledby="custom">
-        <h2>Custom Css/Js</h2>
-      </div>
-      <div id="socials" class="row item-socials tab-pane col-md-12" role="tabpanel" aria-labelledby="socials">
-        <h2>Socials</h2>
+      
+      
+      <div id="pages" class="row item-pages tab-pane col-md-12" role="tabpanel" aria-labelledby="pages">
+        <h2><?= $enc->html( $this->translate( 'admin', 'Custom Page Content' ) ); ?></h2>
+        <div class="col-md-12 home-section"><br>
+          <nav>
+            <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+              <?php if( ( $languages = $this->get( 'pageLangItems', map() ) )->count() >0 ) : ?>
+              <?php foreach($languages as $language){ ?>
+              <a class="nav-item nav-link" id="nav-page-<?=$language->getCode()?>-tab" data-toggle="tab" href="#nav-page-<?=$language->getCode()?>" role="tab" aria-controls="nav-page-<?=$language->getCode()?>" aria-selected="true"><img src="/packages/swordbros/shop/themes/frigian/assets/img/icon/flag/icon_<?=$language->getCode()?>.png" width="24">
+              <?=$language->getCode()?>
+              </a>
+              <?php }?>
+              <?php endif; ?>
+            </div>
+          </nav>
+          <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
+            <?php if( ( $languages = $this->get( 'pageLangItems', map() ) )->count() >0 ) : ?>
+            <?php foreach($languages as $language){?>
+            <div class="tab-pane fade" id="nav-page-<?=$language->getCode()?>" role="tabpanel" aria-labelledby="nav-page-<?=$language->getCode()?>-tab">
+              <div class="tab-content clearfix">
+                <h5>
+                  <?=$language->getLabel()?>
+                  <?= $enc->html( $this->translate( 'admin', 'Page\'s Tab' ) ); ?></h5>
+                <div class="form-group row ">
+                  <label class="col-sm-4 form-control-label help"><?= $enc->html( $this->translate( 'admin', 'About Us' ) ); ?></label>
+                  <div class="col-sm-8">
+                    <textarea name="option[page_aboutus][<?=$language->getCode()?>]"  class="form-control htmleditor form-control item-content"><?=get_option_value($this->items, 'page_aboutus', $language->getCode())?></textarea>
+                  </div>
+                </div>
+                <div class="form-group row ">
+                  <label class="col-sm-4 form-control-label help"><?= $enc->html( $this->translate( 'admin', 'Help' ) ); ?></label>
+                  <div class="col-sm-8">
+                    <textarea name="option[page_help][<?=$language->getCode()?>]"  class="form-control htmleditor form-control item-content"><?=get_option_value($this->items, 'page_help', $language->getCode())?></textarea>
+                  </div>
+                </div>
+                <div class="form-group row ">
+                  <label class="col-sm-4 form-control-label help"><?= $enc->html( $this->translate( 'admin', 'Support' ) ); ?></label>
+                  <div class="col-sm-8">
+                    <textarea name="option[page_support][<?=$language->getCode()?>]"  class="form-control htmleditor form-control item-content"><?=get_option_value($this->items, 'page_support', $language->getCode())?></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <?php }?>
+            <?php endif; ?>
+          </div>
+        </div>
       </div>
       <div id="help" class="row item-help tab-pane col-md-12" role="tabpanel" aria-labelledby="help">
         <h2>Support</h2>

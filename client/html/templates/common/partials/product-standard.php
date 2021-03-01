@@ -129,6 +129,8 @@ if($productItem ){
             $this->config( 'client/html/common/partials/price', 'common/partials/price-standard' ),
             ['prices' => $productItem->getRefItems( 'price', null, 'default' )]
         ); ?>
+
+
 	      
   </div>
   <!-- End Product Content --> 

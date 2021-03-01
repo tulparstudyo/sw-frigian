@@ -16,10 +16,10 @@ class Frigian {
             echo " - Required files copied to $dst \r\n";
         } else{
             echo " ! $src not found \r\n";
-        }   
+        }    
 // blade files
         echo "::: BLADE FILES SETUP :::\r\n";
-        $dst = resource_path() . '/views';
+        $dst = resource_path() ;
         if(!is_dir($dst)){
             @mkdir($dst); 
         }
