@@ -19,6 +19,12 @@
         "Swordbros\\Sardes::composerUpdate"
     ]
 ```
+## .env
+```
+please change your website .env file 
+APP_URL:
+
+```
 ## .htaccess
 ```
 <IfModule mod_rewrite.c>
