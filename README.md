@@ -127,3 +127,8 @@ RewriteRule ^(.*)$ public/$1 [L]
 	],
 
 ```
+## Export & Import Product
+```
+Export command: php artisan aimeos:jobs "product/export/xlsx" "default"
+Import Command php artisan aimeos:jobs "product/import/xlsx" "default"
+```
