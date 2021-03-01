@@ -106,7 +106,7 @@ RewriteRule ^(.*)$ public/$1 [L]
                         ]					
                     ]
                 ]
-		]
+	     ]
 	],
 
 ```
