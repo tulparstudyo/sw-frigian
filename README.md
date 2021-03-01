@@ -49,7 +49,7 @@ RewriteRule ^(.*)$ public/$1 [L]
 			],
 	],
 	'controller' => [
-		'common' => [
+	    'common' => [
             'media' => [
                 'standard' => [
                     'previews' => [
