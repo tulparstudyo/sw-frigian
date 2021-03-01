@@ -83,7 +83,7 @@ RewriteRule ^(.*)$ public/$1 [L]
                 ]
             ]
         ],
-		'jobs' => [
+	'jobs' => [
             'product'=>[
                     'export' => [
                         'xlsx' => [
