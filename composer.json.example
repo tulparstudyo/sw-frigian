@@ -79,8 +79,7 @@
             "@php artisan vendor:publish --tag=public --force",
             "Swordbros\\Frigian::composerUpdate",
 			"@php artisan migrate --path=ext/sw-slider/lib/custom/setup/slider",
-			"@php artisan migrate --path=ext/sw-frigian/lib/custom/setup/options",
-
+			"@php artisan migrate --path=ext/sw-frigian/lib/custom/setup/options"
         ]
     }
 }
