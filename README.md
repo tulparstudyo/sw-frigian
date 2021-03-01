@@ -34,11 +34,6 @@ RewriteRule ^(.*)$ public/$1 [L]
 					'onepage' => ['address', 'delivery', 'payment', 'summary']
 				]
 			],
-			'basket' => [
-				'cache' => [
-					 'enable' => false, // Disable basket content caching for development
-				],
-			],
 			'common' => [
 
 				'baseurl' =>  'packages/swordbros/shop/themes/frigian/' ,
@@ -87,15 +82,15 @@ RewriteRule ^(.*)$ public/$1 [L]
             'product'=>[
                     'export' => [
                         'xlsx' => [
-                            'location'=>'/home/paltoru3.tulparstudyo.net/public_html/public/jobs/products/xlsx/export',
+                            'location'=>'/your_site_path/public/jobs/products/xlsx/export',
                             'filename' => 'products-%1$d-'.date('Y-m-d-h-i-s').'.xlsx'
                         ]					
                     ],
                     'import' => [
                         'xlsx' => [
                            'domains'=>['attribute', 'media', 'price', 'product', 'text'] ,
-                            'backup'=>'/home/paltoru3.tulparstudyo.net/public_html/public/jobs/products/xlsx/backup',
-                            'location' => '/home/paltoru3.tulparstudyo.net/public_html/public/jobs/products/xlsx/import',
+                            'backup'=>'/your_site_path/public/jobs/products/xlsx/backup',
+                            'location' => '/your_site_path/public/jobs/products/xlsx/import',
                             'skip-lines' => 0,
                             'map-items' => [
                                 'media'=>[
