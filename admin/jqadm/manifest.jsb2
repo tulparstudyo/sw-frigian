@@ -1,0 +1,22 @@
+{
+	"projectName": "sw-frigian",
+	"licenseText": "proprietary",
+	"pkgs": [{
+		"name": "sw-frigian CSS",
+		"file": "sw-frigian.css",
+		"isDebug": true,
+		"fileIncludes": [{
+			"text": "custom.css",
+			"path": "themes/"
+		}]
+	}, {
+		"name": "sw-frigian JS",
+		"file": "sw-frigian.js",
+		"isDebug": true,
+		"fileIncludes": [{
+			"text": "custom.js",
+			"path": "themes/"
+		}]
+	}],
+	"resources" : []
+}

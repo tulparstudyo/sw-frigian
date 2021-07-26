@@ -1,0 +1,43 @@
+/*
+ * Custom sw-frigian CSS
+ */
+ .aimeos .main-sidebar .swordbros .icon:before {
+  content: "\f19c";
+}
+.aimeos .main-sidebar .swordbros.active {
+  color:#30d5c8;
+}
+
+.item-frigian .header-type label{
+  padding: 10px;
+  transition: box-shadow .5s;
+}
+.item-frigian .header-type label:hover{
+  box-shadow: 0 0 10px #f1f0a8;
+}
+ul.sw-navitems{
+    list-style: none;
+    font-size: 20px;
+    background-color: #30d5c8;
+    /* height: 100%; */
+    margin: 0;
+    display: inline-block;
+    line-height: 48px;
+    padding: 0px 5px;
+    margin-right: -.5rem;
+}
+ul.sw-navitems li {
+    float: left;
+    margin-left: 10px;
+    min-width: 24px;
+    text-align: center;
+}
+.log-clear{
+    cursor: pointer;
+    }
+
+.log-clear.fa-download{
+    margin-top: 7px;
+    color: #D51518;
+    }
+
